@@ -1,0 +1,17 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@android:color/black">
+
+    <com.player.muvi.muviplayer.demoApplication.library.ui.widget.VideoView
+        android:id="@+id/video_play_activity_video_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:useDefaultControls="false"/>
+    <com.player.muvi.muviplayer.demoApplication.library.ui.widget.VideoControlsMobile
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/Controls"/>
+</RelativeLayout>

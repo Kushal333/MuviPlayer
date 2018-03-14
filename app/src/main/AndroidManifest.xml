@@ -1,0 +1,55 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.player.muvi.muviplayer">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:name=".demoApplication.App">
+        <activity
+
+            android:name=".demoApplication.activity.StartupActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".demoApplication.activity.VideoPlayerActivity"
+            android:label="@string/title_activity_video_player">
+        </activity>
+        <activity
+            android:name=".demoApplication.activity.FullScreenVideoPlayerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_video_player">
+        </activity>
+        <activity
+            android:name=".demoApplication.activity.VideoSelectionActivity"
+            android:label="@string/title_activity_video_player">
+        </activity>
+        <activity
+            android:name=".demoApplication.activity.AudioSelectionActivity"
+            android:label="@string/title_activity_audio_player">
+        </activity>
+        <activity
+            android:name=".demoApplication.activity.AudioPlayerActivity"
+            android:label="@string/title_activity_audio_player">
+        </activity>
+        <activity android:name=".demoApplication.activity.VideoIndividualActivity" />
+
+
+        <service
+            android:name=".demoApplication.service.MediaService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="77980e8e65eac0d6356d940238b0010e40362281" />
+    </application>
+</manifest>
