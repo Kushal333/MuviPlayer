@@ -103,7 +103,12 @@ public class VideoControlsLeanback extends VideoControls {
         if (duration != progressBar.getMax()) {
             endTimeTextView.setText(TimeFormatUtil.formatMs(duration));
             progressBar.setMax((int) duration);
+        }else{
+            duration=0;
+            endTimeTextView.setText(TimeFormatUtil.formatMs(duration));
+            progressBar.setMax((int) duration);
         }
+
     }
 
     @Override

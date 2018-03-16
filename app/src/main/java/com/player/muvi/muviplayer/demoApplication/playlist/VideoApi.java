@@ -85,6 +85,8 @@ public class VideoApi extends BaseMediaApi implements PlaylistListener<MediaItem
         prepared = false;
         bufferPercent = 0;
         videoView.setVideoURI(Uri.parse(item.getDownloaded() ? item.getDownloadedMediaUri() : item.getMediaUrl()));
+        videoView.setVideoType(item.getVideoType());
+        videoView.getVideoControls().setVideoType(item.getVideoType());
     }
 
     @Override
@@ -118,6 +120,10 @@ public class VideoApi extends BaseMediaApi implements PlaylistListener<MediaItem
             // Updates the VideoControls button visibilities
             videoControls.setPreviousButtonEnabled(hasPrevious);
             videoControls.setNextButtonEnabled(hasNext);
+            videoView.setVideoType(currentItem.getVideoType());
+            videoControls.setVideoType(currentItem.getVideoType());
+
+
         }
 
         return false;

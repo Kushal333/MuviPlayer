@@ -49,6 +49,10 @@ public class MediaItem implements PlaylistItem {
         return sample.getArtworkUrl();
     }
 
+    public int getVideoType(){
+        return sample.getVideoType();
+    }
+
     @Override
     public String getArtworkUrl() {
         return sample.getArtworkUrl();

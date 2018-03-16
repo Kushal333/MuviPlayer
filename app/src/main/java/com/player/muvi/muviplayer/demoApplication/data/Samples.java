@@ -26,17 +26,21 @@ public class Samples {
 
         //Video items
         videoSamples = new ArrayList<>();
-        videoSamples.add(new Sample("FLV - Big Buck Bunny by Blender", "http://vod.leasewebcdn.com/bbb.flv?ri=1024&rs=150&start=0"));
-        videoSamples.add(new Sample("HLS - ArtBeats", "http://cdn-fms.rbs.com.br/vod/hls_sample1_manifest.m3u8"));
-        videoSamples.add(new Sample("HLS - Sintel by Blender", "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"));
-        videoSamples.add(new Sample("MKV - Android Screens", "http://storage.googleapis.com/exoplayer-test-media-1/mkv/android-screens-lavf-56.36.100-aac-avc-main-1280x720.mkv"));
-        videoSamples.add(new Sample("MP4 (VP9) - Google Glass", "http://demos.webmproject.org/exoplayer/glass.mp4"));
-        videoSamples.add(new Sample("MPEG DASH - Sintel by Blender", "https://bitdash-a.akamaihd.net/content/sintel/sintel.mpd"));
-        videoSamples.add(new Sample("MPEG DASH - Big Buck Bunny by Blender, Live", "https://wowzaec2demo.streamlock.net/live/bigbuckbunny/manifest_mpm4sav_mvtime.mpd"));
-        videoSamples.add(new Sample("Smooth Stream - Caminandes: Llama Drama by Blender", "http://amssamples.streaming.mediaservices.windows.net/634cd01c-6822-4630-8444-8dd6279f94c6/CaminandesLlamaDrama4K.ism/manifest"));
-        videoSamples.add(new Sample("Smooth Stream - Tears of Steel Teaser by Blender", "http://amssamples.streaming.mediaservices.windows.net/3d7eaff9-39fa-442f-81cc-f2ea7db1797e/TearsOfSteelTeaser.ism/manifest"));
-        videoSamples.add(new Sample("WEBM - Big Buck Bunny", "http://dl1.webmfiles.org/big-buck-bunny_trailer.webm"));
-        videoSamples.add(new Sample("WEBM - Elephants Dream", "http://dl1.webmfiles.org/elephants-dream.webm"));
+        videoSamples.add(new Sample("FLV - Big Buck Bunny by Blender", "http://vod.leasewebcdn.com/bbb.flv?ri=1024&rs=150&start=0",2));
+        videoSamples.add(new Sample("HLS - ArtBeats", "http://cdn-fms.rbs.com.br/vod/hls_sample1_manifest.m3u8",2));
+        videoSamples.add(new Sample("Live TV- Kushal", "http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8",1));
+        videoSamples.add(new Sample("HLS - Sintel by Blender", "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",2));
+        videoSamples.add(new Sample("MKV - Android Screens", "http://storage.googleapis.com/exoplayer-test-media-1/mkv/android-screens-lavf-56.36.100-aac-avc-main-1280x720.mkv",2));
+        videoSamples.add(new Sample("MP4 (VP9) - Google Glass", "http://demos.webmproject.org/exoplayer/glass.mp4",2));
+        videoSamples.add(new Sample("MPEG DASH - Sintel by Blender", "https://bitdash-a.akamaihd.net/content/sintel/sintel.mpd",2));
+        videoSamples.add(new Sample("MPEG DASH - Big Buck Bunny by Blender, Live", "https://wowzaec2demo.streamlock.net/live/bigbuckbunny/manifest_mpm4sav_mvtime.mpd",2));
+        videoSamples.add(new Sample("Smooth Stream - Caminandes: Llama Drama by Blender", "http://amssamples.streaming.mediaservices.windows.net/634cd01c-6822-4630-8444-8dd6279f94c6/CaminandesLlamaDrama4K.ism/manifest",2));
+        videoSamples.add(new Sample("Smooth Stream - Tears of Steel Teaser by Blender", "http://amssamples.streaming.mediaservices.windows.net/3d7eaff9-39fa-442f-81cc-f2ea7db1797e/TearsOfSteelTeaser.ism/manifest",2));
+        videoSamples.add(new Sample("WEBM - Big Buck Bunny", "http://dl1.webmfiles.org/big-buck-bunny_trailer.webm",2));
+        videoSamples.add(new Sample("WEBM - Elephants Dream", "http://dl1.webmfiles.org/elephants-dream.webm",2));
+        videoSamples.add(new Sample("New Test", "https://youtu.be/8pJ7lJNiGkA",2));
+
+
     }
 
     @NonNull
@@ -61,8 +65,12 @@ public class Samples {
         @Nullable
         private String artworkUrl;
 
-        public Sample(@NonNull String title, @NonNull String mediaUrl) {
-            this(title, mediaUrl, null);
+        private int videoType;
+
+        public Sample(@NonNull String title, @NonNull String mediaUrl, @Nullable int type) {
+            this.title=title;
+            this.mediaUrl=mediaUrl;
+            this.videoType=type;
         }
 
         public Sample(@NonNull String title, @NonNull String mediaUrl, @Nullable String artworkUrl) {
@@ -85,5 +93,9 @@ public class Samples {
         public String getArtworkUrl() {
             return artworkUrl;
         }
+
+        @Nullable
+        public int getVideoType(){return videoType;}
+
     }
 }

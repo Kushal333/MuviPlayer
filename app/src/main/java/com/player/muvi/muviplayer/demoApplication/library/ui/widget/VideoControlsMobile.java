@@ -77,8 +77,15 @@ public class VideoControlsMobile extends VideoControls {
     @Override
     public void setDuration(@IntRange(from = 0) long duration) {
         if (duration != seekBar.getMax()) {
-            endTimeTextView.setText(TimeFormatUtil.formatMs(duration));
-            seekBar.setMax((int) duration);
+            if(videoView.getVideoType()!=1) {
+                endTimeTextView.setText(TimeFormatUtil.formatMs(duration));
+                seekBar.setMax((int) duration);
+            }else{
+                duration=0;
+                endTimeTextView.setText(TimeFormatUtil.formatMs(duration));
+                seekBar.setMax((int) duration);
+                seekBar.setOnSeekBarChangeListener(null);
+            }
         }
     }
 

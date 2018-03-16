@@ -44,6 +44,7 @@ import com.player.muvi.muviplayer.demoApplication.library.listener.VideoControls
 import com.player.muvi.muviplayer.demoApplication.library.listener.VideoControlsVisibilityListener;
 import com.player.muvi.muviplayer.demoApplication.library.util.Repeater;
 import com.player.muvi.muviplayer.demoApplication.library.util.ResourceUtil;
+import com.player.muvi.muviplayer.demoApplication.library.util.TimeFormatUtil;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -380,6 +381,13 @@ public abstract class VideoControls extends RelativeLayout {
     public void setNextButtonEnabled(boolean enabled) {
         nextButton.setEnabled(enabled);
         enabledViews.put(R.id.exomedia_controls_next_btn, enabled);
+    }
+
+    public void setVideoType(int type){
+        if (type==1){
+            endTimeTextView.setText(TimeFormatUtil.formatMs(0));
+            videoView.getVideoControls().setSeekListener(null);
+        }
     }
 
     /**

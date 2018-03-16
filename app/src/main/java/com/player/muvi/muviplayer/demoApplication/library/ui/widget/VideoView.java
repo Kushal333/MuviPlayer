@@ -60,6 +60,7 @@ import com.player.muvi.muviplayer.demoApplication.library.listener.OnSeekComplet
 import com.player.muvi.muviplayer.demoApplication.library.listener.OnVideoSizeChangedListener;
 import com.player.muvi.muviplayer.demoApplication.library.util.DeviceUtil;
 import com.player.muvi.muviplayer.demoApplication.library.util.StopWatch;
+import com.player.muvi.muviplayer.demoApplication.library.util.TimeFormatUtil;
 
 import java.util.Map;
 
@@ -100,6 +101,8 @@ public class VideoView extends RelativeLayout {
     protected boolean handleAudioFocus = true;
 
     long sec;
+
+    protected int videoType;
 
     public VideoView(Context context) {
         super(context);
@@ -163,6 +166,14 @@ public class VideoView extends RelativeLayout {
         overriddenPositionStopWatch.stop();
 
         videoViewImpl.release();
+    }
+
+    public void setVideoType(int type){
+        this.videoType=type;
+    }
+
+    public int getVideoType(){
+        return videoType;
     }
 
     /**
@@ -1022,36 +1033,38 @@ public class VideoView extends RelativeLayout {
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             float sensitivity = 100;
-            // Swipe Left action
-            //    Toast.makeText(getContext(), ""+distanceX, Toast.LENGTH_SHORT).show();
+            if (videoControls.videoView.getVideoType()!=1) {
+                // Swipe Left action
+                //    Toast.makeText(getContext(), ""+distanceX, Toast.LENGTH_SHORT).show();
 
            /* if (e1.getY()-e2.getY()>sensitivity)
                 start();
             if(e2.getY()-e1.getY()>sensitivity)
                 videoViewImpl.pause();*/
-            int difference = (int) (e1.getX() - e2.getX());
-            if (difference > 0) {
-                assert videoControls != null;
-                videoControls.videoView.pause(true);
-                sec = videoControls.videoView.getCurrentPosition();
-                videoViewImpl.seekTo(sec - difference);
-                videoControls.updateProgress();
-                videoControls.updatePlaybackState(true);
+                int difference = (int) (e1.getX() - e2.getX());
+                if (difference > 0) {
+                    assert videoControls != null;
+                    videoControls.videoView.pause(true);
+                    sec = videoControls.videoView.getCurrentPosition();
+                    videoViewImpl.seekTo(sec - difference);
+                    videoControls.updateProgress();
+                    videoControls.updatePlaybackState(true);
 
+                }
+                //Swipe Right Check
+                else if (difference < 0) {
+                    assert videoControls != null;
+                    videoControls.videoView.pause(true);
+                    sec = videoControls.videoView.getCurrentPosition();
+                    videoViewImpl.start();
+                    videoViewImpl.seekTo(sec - difference);
+                    videoControls.updateProgress();
+                    videoControls.updatePlaybackState(true);
+
+
+                }
+                start();
             }
-            //Swipe Right Check
-            else if (difference < 0) {
-                assert videoControls != null;
-                videoControls.videoView.pause(true);
-                sec = videoControls.videoView.getCurrentPosition();
-                videoViewImpl.start();
-                videoViewImpl.seekTo(sec - difference);
-                videoControls.updateProgress();
-                videoControls.updatePlaybackState(true);
-
-
-            }
-            start();
 
             return true;
         }

@@ -100,6 +100,10 @@ public class VideoPlayerActivity extends Activity implements VideoControlsSeekLi
         playlistManager.addVideoApi(videoApi);
         playlistManager.play(0, false);
 
+        Toast.makeText(this, ""+videoView.getAvailableTracks(), Toast.LENGTH_LONG).show();
+
+
+
         videoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
